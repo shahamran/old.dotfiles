@@ -372,7 +372,7 @@ $exec pamac-tray
 $exec clipit
 # $exec blueman
 # exec_always --no-startup-id sbxkb
-set $conkyrc /usr/share/conky/conky_maia
+set $conkyrc ~/.conkyrc
 $exec conky -c $conkyrc
 # $exec start_conky_green
 $exec xautolock -time 10 -locker blurlock
