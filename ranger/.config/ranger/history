@@ -15,7 +15,6 @@ rename ranziskaner.jpeg
 open_with 1
 tar xfv Libre_Baskerville.zip
 shel
-mkdir fonts
 mkdir images
 mv ra
 open_with 2
@@ -33,10 +32,13 @@ terminal
 echo $TERMCMD
 shell echo $TERMCMD
 delete ex4.zip
-delete
 open_with lyx
 open_with subl
 mkdir ex2
 rename 
 rename ex2.pdf
 
+extracthere 
+mkdir VarelaRound
+delete
+mkdir fonts
