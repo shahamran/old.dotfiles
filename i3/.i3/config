@@ -262,8 +262,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws8; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws8; workspace $ws10
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # Open applications on specific workspaces
 assign [class="Firefox"]     $ws1
@@ -369,7 +369,7 @@ $exec nitrogen --restore; sleep 1; compton -b
 $exec nm-applet
 $exec xfce4-power-manager
 $exec pamac-tray
-$exec clipit
+$exec clipit --no-icon
 # $exec blueman
 # exec_always --no-startup-id sbxkb
 set $conkyrc ~/.conkyrc
@@ -379,46 +379,49 @@ $exec xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 $exec dropbox
 
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-    	status_command i3status
-    	position top
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-    	bindsym button4 nop
-    	bindsym button5 nop
-    	font pango:$myfont 10.5
-    	strip_workspace_numbers yes
-
-    	colors {
-            # background $transparent
-        	# background #2B2C2B
-            # statusline #F9FAF9
-        	# separator  #454947
-
-            # #                  border  backgr. text
-        	# focused_workspace  #F9FAF9 #16A085 #2B2C2B
-        	# active_workspace   #595B5B #353836 #FDF6E3
-        	# inactive_workspace #595B5B #353836 #EEE8D5
-        	# urgent_workspace   #16A085 #FDF6E3 #E5201D
-
-            background $bg-color
-            statusline $text-color
-            separator  $darkblack
-
-            #                  border     backgr.      text
-            focused_workspace  $white     $darkwhite   $bg-color
-            active_workspace   $darkwhite $darkblack   $text-color
-            inactive_workspace $darkwhite $darkblack   $darkwhite
-            urgent_workspace   $white     $darkmagenta $text-color
-	    }
-}
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+#bar {
+#    	status_command i3status
+#    	position top
+#
+### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+##	tray_output primary
+##	tray_output eDP1
+#
+#    	bindsym button4 nop
+#    	bindsym button5 nop
+#    	font pango:$myfont 10.5
+#    	strip_workspace_numbers yes
+#
+#    	colors {
+#            # background $transparent
+#        	# background #2B2C2B
+#            # statusline #F9FAF9
+#        	# separator  #454947
+#
+#            # #                  border  backgr. text
+#        	# focused_workspace  #F9FAF9 #16A085 #2B2C2B
+#        	# active_workspace   #595B5B #353836 #FDF6E3
+#        	# inactive_workspace #595B5B #353836 #EEE8D5
+#        	# urgent_workspace   #16A085 #FDF6E3 #E5201D
+#
+#            background $bg-color
+#            statusline $text-color
+#            separator  $darkblack
+#
+#            #                  border     backgr.      text
+#            focused_workspace  $white     $darkwhite   $bg-color
+#            active_workspace   $darkwhite $darkblack   $text-color
+#            inactive_workspace $darkwhite $darkblack   $darkwhite
+#            urgent_workspace   $white     $darkmagenta $text-color
+#	    }
+#}
+#
+## hide/unhide i3status bar
+#bindsym $mod+m bar mode toggle
 
 #############################
 ### settings for i3-gaps: ###
