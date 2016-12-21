@@ -1,3 +1,5 @@
 [user]
 	email = shahamran91@gmail.com
 	name = Ran Shaham
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
