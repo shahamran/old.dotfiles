@@ -152,7 +152,7 @@ bindsym $mod+F3 exec $filemanager
 bindsym $mod+Shift+F3 exec gksu $filemanager
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t $exec pkill compton
-bindsym $mod+Ctrl+t $exec compton -b -f
+bindsym $mod+Ctrl+t $exec compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print $exec i3-scrot
 bindsym $mod+Print --release $exec i3-scrot -w
@@ -363,7 +363,7 @@ mode "resize" {
 ## adjustment of i3bar battery reading (only run at the very first login):
 #$exec /usr/bin/adjust_i3statusconf
 $exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-$exec nitrogen --restore; sleep 1; compton -b -f
+$exec nitrogen --restore; sleep 1; compton -b
 $exec nm-applet
 $exec xfce4-power-manager
 $exec pamac-tray
