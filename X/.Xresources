@@ -89,15 +89,18 @@ rofi.lines:	10
 !rofi.eh:	2
 !rofi.bw:	0
 !rofi.padding:	200
-! Use extended color scheme
+
+! --- Rofi Colors ---
+
+! -- Use extended color scheme--
 rofi.color-enabled:                  true
-! Color scheme for normal row
+! -- Color scheme for normal row --
 rofi.color-normal:                   #ffffff,#525d76,#f5f5f5,#5294e2,#ffffff
-! Color scheme for urgent row
+! -- Color scheme for urgent row --
 rofi.color-urgent:                   #ffffff,#dc322f,#f5f5f5,#5294e2,#dc322f
-! Color scheme for active row
+! -- Color scheme for active row --
 rofi.color-active:                   #ffffff,#c2cad0,#f5f5f5,#5294e2,#c2cad0
-! Color scheme window
+! -- Color scheme window --
 rofi.color-window:                   #ffffff,#f5f5f5
-! Separator style (none, dash, solid)
+! -- Separator style (none, dash, solid) --
 rofi.separator-style:                solid
