@@ -21,8 +21,13 @@ set $browser firefox
 # The allmighty terminal
 set $terminal termite
 # Default file Manager
-set $filemanager pcmanfm
+set $filemanager thunar
 # manjaro default is pcmanfm
+set $conkyrc ~/.conkyrc
+
+# i3status
+set $barprog i3blocks
+set $barconf /home/ransha/.i3/i3blocks.conf
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -38,9 +43,6 @@ set $ws7  "7:<sup>7</sup> "
 set $ws8  "8:<sup>8</sup> "
 set $ws9  "9:<sup>9</sup> "
 set $ws10 "10:<sup>10</sup> "
-# i3status
-set $barprog i3blocks
-set $barconf /home/ransha/.i3/i3blocks.conf
 
 # ========== Colors =============
 
@@ -125,7 +127,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d $exec dmenu_recency
 bindsym $mod+d $exec rofi -show run
 
-# launch categorized menu
+# launch categorized menu   --- what is this? ---
 bindsym $mod+z $exec morc_menu
 
 ################################################################################################
@@ -141,23 +143,25 @@ bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
+# check
 bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
 bindsym $mod+F2 exec $browser
 bindsym $mod+F3 exec $filemanager
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu $filemanager
+# check
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t $exec pkill compton
 bindsym $mod+Ctrl+t $exec compton -b
+# replace with xfce4-notifyd
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print $exec i3-scrot
 bindsym $mod+Print --release $exec i3-scrot -w
 bindsym $mod+Shift+Print --release $exec i3-scrot -s
-bindsym $mod+Ctrl+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release $exec xkill
 
 focus_follows_mouse no
@@ -269,8 +273,9 @@ assign [class="Firefox"]     $ws1
 assign [class="Subl"]        $ws3
 assign [class="lyx"]         $ws3
 assign [class="Pcmanfm"]     $ws4
+assign [class="Thunar"]     $ws4
 # assign [class="Skype"]     $ws5
-assign [class="Cutegram"]    $ws9
+assign [class="Cutegram"]    $ws9   # install
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -279,7 +284,6 @@ for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Manjaro Settings Manager"] floating enable border normal
@@ -299,6 +303,7 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="Caffeine"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -316,19 +321,26 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
+# actions:
+set $shutdown   systemctl poweroff
+set $reboot     systemctl reboot
+set $hibernate  systemctl hibernate
+set $suspend    systemctl suspend
+set $exit       i3-msg exit
+set $locker     /home/ransha/.i3/scripts/lock/lock.sh && sleep 1
+
 bindsym $mod+F4 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (e)xit, (s)uspend, (r)eboot, (h)ibernate, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l $exec i3exit lock, mode "default"
-    bindsym s $exec i3exit suspend, mode "default"
-    bindsym u $exec i3exit switch_user, mode "default"
-    bindsym e $exec i3exit logout, mode "default"
-    bindsym h $exec i3exit hibernate, mode "default"
-    bindsym r $exec i3exit reboot, mode "default"
-    bindsym Shift+s $exec i3exit shutdown, mode "default"
+    bindsym l $exec $locker,    mode "default"
+    bindsym s $exec $suspend,   mode "default"
+    bindsym e $exec $exit,      mode "default"
+    bindsym h $exec $hibernate, mode "default"
+    bindsym r $exec $reboot,    mode "default"
+    bindsym Shift+s $exec $shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
+#    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
@@ -363,9 +375,11 @@ mode "resize" {
 ## adjustment of i3bar battery reading (only run at the very first login):
 #$exec /usr/bin/adjust_i3statusconf
 $exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-$exec nitrogen --restore; sleep 1; compton -b
+exec_always --no-startup-id feh --recursive --randomize --bg-fill /home/ransha/Dropbox/Photos/Wallpapers/EarthView/
+# $exec nitrogen --restore; sleep 1; compton -b
 $exec nm-applet
-$exec xfce4-power-manager
+# $exec xfce4-power-manager
+$exec mate-power-manager
 $exec pamac-tray
 $exec clipit --no-icon
 # $exec blueman
@@ -376,6 +390,10 @@ $exec conky -c $conkyrc
 $exec xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 $exec dropbox
+$exec volnoti --timeout 1
+
+# caffeine!
+$exec caffeine
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
