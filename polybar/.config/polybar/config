@@ -20,7 +20,7 @@ alert = #bd2c40
 margin-top = 5
 margin-bottom = 5
 
-[bar/laptop]
+[bar/base]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 dpi = 144
@@ -51,77 +51,48 @@ font-0 = Roboto:size=10;0
 font-1 = DejavuSansMono:size=8;-2
 font-2 = FontAwesome:pixelsize=9;0
 
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[bar/laptop]
+inherit = bar/base
+
+dpi = 130
+height = 38
+
+font-0 = DejaVuSans:size=12;0
+font-1 = DejaVuSansMono:size=10;-2
+font-2 = FontAwesome:pixelsize=10;0
+
 modules-left = i3
 modules-center = xwindow
 modules-right = volume backlight xkeyboard cpu wlan date battery powermenu
 
-tray-position = right
-tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
-
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+inherit = bar/base
+
 height = 27
-offset-x = 0
-offset-y = 0
 
-background = ${xrdb:background}
-;background = ${colors.background}
-foreground = ${colors.foreground}
-;foreground = ${xrdb.foreground}
+font-0 = DejaVuSans:size=10;0
+font-1 = DejaVuSansMono:size=10;-2
+font-2 = FontAwesome:pixelsize=9;0
 
-overline-size = 2
-overline-color = #f00
-underline-size = 2
-underline-color = #00f
-
-border-bottom = 2
-border-bottom-color = #333
-
-spacing = 1
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = DejaVuSansMono:size=8;0
-font-1 = DejaVuSansMono:size=8;-2
-font-2 = WunconSiji:pixelsize=10;0
-
-modules-left = i3
-modules-center = xwindow
-modules-right = volume xkeyboard filesystem memory cpu eth date powermenu
-
-tray-position = right
-tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
+modules-left = xwindow
+modules-center = i3
+modules-right = volume xkeyboard desktop_fs memory cpu eth date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -146,13 +117,19 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-;mount-1 = /home
-;mount-2 = /invalid/mountpoint
+
+format-mounted = <label-mounted>
 
 label-mounted = %mountpoint%: %percentage_free%%
-
 label-unmounted = %mountpoint%: not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/desktop_fs]
+inherit = module/filesystem
+mount-1 = /home
+
+[module/laptop_fs]
+inherit = module/filesystem
 
 [module/bspwm]
 type = internal/bspwm
@@ -282,8 +259,8 @@ interface = enp4s0
 interval = 3.0
 
 format-connected-underline = #6f6749
-format-connected-prefix = " "
-format-connected-foreground-foreground = ${colors.foreground-alt}
+format-connected-prefix = " "
+;format-connected-foreground-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected-underline = ${self.format-connected-underline}
