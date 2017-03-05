@@ -1,0 +1,46 @@
+#! /bin/sh
+
+# start applications
+sxhkd &
+compton -b
+
+# define variables
+ws1=
+ws2=
+ws3=
+ws4=
+ws5=
+ws6=
+ws7=
+ws8=
+ws9=
+ws10=
+
+# configure desktops
+bspc monitor -d $ws1 $ws2 $ws3 $ws4 $ws5 \
+	$ws6 $ws7 $ws8 $ws9 $ws10
+
+# global config
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config leaf_monocle         true
+bspc config click_to_focus       true
+
+# make panel visible
+bspc config top_padding 40
+
+# window rules
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^1'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a yakuake sticky=on floating=on
+bspc rule -a Plasma floating=on
+bspc rule -a Plasma-desktop floating=on
+bspc rule -a plasmashell floating=on
+
