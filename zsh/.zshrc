@@ -118,4 +118,3 @@ man() {
 
 # -------- Environment variables ------
 export VISUAL=vim
-
