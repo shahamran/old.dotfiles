@@ -22,25 +22,28 @@ bspc monitor -d $ws1 $ws2 $ws3 $ws4 $ws5 \
 
 # global config
 bspc config border_width         2
-bspc config window_gap          12
+bspc config window_gap           12
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-bspc config leaf_monocle         true
+bspc config single_monocle       true  # single window == monocle
 bspc config click_to_focus       true
-
-# make panel visible
-bspc config top_padding 40
+bspc config top_padding          40    # for plasma panel
 
 # window rules
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^1'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a yakuake sticky=on floating=on
-bspc rule -a Plasma floating=on
-bspc rule -a Plasma-desktop floating=on
-bspc rule -a plasmashell floating=on
+bspc rule -a Gimp       desktop='^8'  state=floating follow=on
+bspc rule -a Chromium   desktop='^1'
+bspc rule -a Firefox    desktop='^1'
+bspc rule -a mplayer2   state=floating
+bspc rule -a Kupfer.py  focus=on
+bspc rule -a Screenkey  manage=off
 
+# plasma rules
+#bspc rule -a yakuake sticky=on floating=on
+#bspc rule -a Plasma floating=on
+#bspc rule -a Plasma-desktop floating=on
+#bspc rule -a plasmashell floating=on
+
+# external rules
+bspc config external_rules_command "$XDG_CONFIG_HOME/bspwm/external_rules"

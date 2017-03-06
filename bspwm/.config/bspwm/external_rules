@@ -5,8 +5,16 @@ class=$2
 instance=$3
 title=$(xtitle "$wid")
 
-if [ "$instance" = Yakuake ] ; then
-    echo "sticky=on state=floating"
-    xdotool windowmove $wid 0 0
+if [ "$class" = yakuake ] ; then
+  echo "sticky=on state=floating"
+  xdotool windowmove $wid 0 40
 fi
 
+if [ "$class" = krunner ] ; then
+  echo "sticky=on state=floating"
+  xdotool windowmove $wid 600 45
+fi
+
+if [ "$class" = plasmashell ] ; then
+  echo "state=floating"
+fi
