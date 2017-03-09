@@ -22,6 +22,7 @@ set $browser firefox
 set $terminal termite
 # Default file Manager
 set $filemanager thunar
+set $term_filemanager termite --class=Ranger -e ranger
 # manjaro default is pcmanfm
 set $conkyrc ~/.conkyrc
 
@@ -154,9 +155,9 @@ bindsym $mod+F3 exec $filemanager
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu $filemanager
 # check
-bindsym $mod+F5 exec $terminal -e 'mocp'
+bindsym $mod+e exec $term_filemanager
 bindsym $mod+t $exec pkill compton
-bindsym $mod+Ctrl+t $exec compton -b
+bindsym $mod+Ctrl+t $exec compton -b --blur-background
 # replace with xfce4-notifyd
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print $exec i3-scrot
@@ -206,7 +207,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Ctrl+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -273,7 +274,8 @@ assign [class="Firefox"]     $ws1
 assign [class="Subl"]        $ws3
 assign [class="lyx"]         $ws3
 assign [class="Pcmanfm"]     $ws4
-assign [class="Thunar"]     $ws4
+assign [class="Thunar"]      $ws4
+assign [class="Ranger"]      $ws4
 # assign [class="Skype"]     $ws5
 assign [class="Cutegram"]    $ws9   # install
 
