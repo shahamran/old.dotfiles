@@ -8,8 +8,8 @@
 ;=====================================================
 
 [colors]
-background = #181b20
-background-alt = #353535
+background = #ee181b20
+background-alt = #ee353535
 foreground = #9b9081
 foreground-alt = #b3b3b3
 primary = #435861
@@ -27,8 +27,8 @@ height = 38
 offset-x = 0
 offset-y = 0
 
-background = ${xrdb:background}
-;background = ${colors.background}
+;background = ${xrdb:background}
+background = ${colors.background}
 foreground = ${colors.foreground}
 ;foreground = ${xrdb.foreground}
 
@@ -53,7 +53,7 @@ font-2 = FontAwesome:pixelsize=10;0
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
-;tray-background = #0063ff
+tray-background = #ee181b20
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -89,9 +89,9 @@ font-0 = DejaVuSans:size=10;0
 font-1 = DejaVuSansMono:size=10;-2
 font-2 = FontAwesome:pixelsize=9;0
 
-modules-left = xwindow
-modules-center = i3
-modules-right = volume xkeyboard desktop_fs memory cpu eth date powermenu
+modules-left = i3
+modules-center =
+modules-right = xwindow volume xkeyboard desktop_fs memory cpu eth date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -265,6 +265,8 @@ label-connected = %local_ip%
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
+
+click-left = /usr/bin/nm-connection-editor
 
 [module/date]
 type = internal/date
