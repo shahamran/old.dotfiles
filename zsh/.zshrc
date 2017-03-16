@@ -119,3 +119,5 @@ man() {
 # -------- Environment variables ------
 export VISUAL=vim
 
+# ------------- Aliases ---------------
+source "$HOME/.aliasrc"
