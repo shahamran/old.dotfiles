@@ -144,8 +144,8 @@ bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10 && notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10 && notify-send 'brightness down'"
 
 # Start Applications
 # check
@@ -373,12 +373,14 @@ mode "resize" {
 # Lock screen
 # bindsym $mod+9 $exec blurlock
 
-# Autostart applications
+# ====== Autostart applications ======
+
 ## adjustment of i3bar battery reading (only run at the very first login):
 #$exec /usr/bin/adjust_i3statusconf
 $exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id feh --recursive --randomize --bg-fill /home/ransha/Dropbox/Photos/Wallpapers/EarthView/
 # $exec nitrogen --restore; sleep 1; compton -b
+$exec compton -b
 $exec nm-applet
 # $exec xfce4-power-manager
 $exec mate-power-manager
@@ -393,6 +395,7 @@ $exec xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 $exec dropbox
 $exec volnoti --timeout 1
+$exec xbindkeys
 
 # caffeine!
 $exec caffeine
