@@ -83,20 +83,20 @@ URxvt.transparent:                    false
 *.color15:      #cdcdcd
 
 ! ---------- Rofi ----------
-
-rofi.opacity:	90
-rofi.width:	100
-rofi.lines:	10
-rofi.eh:	2
-!rofi.bw:	0
-rofi.padding:	200
-rofi.fullscreen: true
-
-! --- Rofi Colors ---
-
-rofi.color-enabled: true
-rofi.color-window: #181b20, #181b20, #353535
-rofi.color-normal: #181b20, #9b9081, #181b20, #353535, #9b9081
-rofi.color-active: #181b20, #9b9081, #181b20, #353535, #4094c2
-rofi.color-urgent: #181b20, #9b9081, #181b20, #353535, #9f3636
-
+#include "$HOME/.Xresources.d/rofi"
+!rofi.opacity:	90
+!rofi.width:	100
+!rofi.lines:	10
+!rofi.eh:	2
+!!rofi.bw:	0
+!rofi.padding:	200
+!rofi.fullscreen: true
+!
+!! --- Rofi Colors ---
+!
+!rofi.color-enabled: true
+!rofi.color-window: #181b20, #181b20, #353535
+!rofi.color-normal: #181b20, #9b9081, #181b20, #353535, #9b9081
+!rofi.color-active: #181b20, #9b9081, #181b20, #353535, #4094c2
+!rofi.color-urgent: #181b20, #9b9081, #181b20, #353535, #9f3636
+!
