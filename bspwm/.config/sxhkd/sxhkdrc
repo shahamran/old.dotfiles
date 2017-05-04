@@ -38,6 +38,10 @@ super + y
 super + g
 	bspc node -s biggest
 
+# change gaps size
+super + {shift,ctrl} + g
+	bspc config window_gap {12,35}
+
 #
 # state/flags
 #
