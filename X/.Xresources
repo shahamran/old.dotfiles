@@ -84,14 +84,6 @@ URxvt.transparent:                    false
 
 ! ---------- Rofi ----------
 #include "$HOME/.Xresources.d/rofi"
-!rofi.opacity:	90
-!rofi.width:	100
-!rofi.lines:	10
-!rofi.eh:	2
-!!rofi.bw:	0
-!rofi.padding:	200
-!rofi.fullscreen: true
-!
 !! --- Rofi Colors ---
 !
 !rofi.color-enabled: true
