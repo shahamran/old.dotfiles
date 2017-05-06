@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/ransha/.oh-my-zsh
+export ZSH=/home/ransha/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -86,13 +86,19 @@ source $ZSH/oh-my-zsh.sh
 #
 #
 
-# -------- Miniconda ----------
-# added by Miniconda3 4.2.12 installer
-export PATH="$PATH:/home/ransha/miniconda3/bin"
+# -------- PATH ---------------
 
-# -------- Gem ---------------
-# Add gem to PATH
-export PATH="$PATH:/home/ransha/.gem/ruby/2.3.0/bin"
+path="$PATH"
+
+# User's binaries
+path="$path:/home/ransha/bin"
+
+# Miniconda
+path="$path:/home/ransha/miniconda3/bin"
+# Gem
+path="$path:/home/ransha/.gem/ruby/2.3.0/bin"
+
+export PATH="$path"
 
 # --------- Google Cloud SDK ----------
 # The next line updates PATH for the Google Cloud SDK.
@@ -118,6 +124,7 @@ man() {
 
 # -------- Environment variables ------
 export VISUAL=vim
+export MATLAB_LOG_DIR="$HOME/.log/matlab"
 
 # ------------- Aliases ---------------
 source "$HOME/.aliasrc"

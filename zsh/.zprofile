@@ -9,3 +9,5 @@ setxkbmap -layout us,il -option "grp:alt_shift_toggle,grp_led:scroll"
 
 export SSH_ASKPASS="$(which ksshaskpass)"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export PATH="$HOME/.cargo/bin:$PATH"

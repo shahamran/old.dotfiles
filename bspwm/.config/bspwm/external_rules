@@ -7,12 +7,12 @@ title=$(xtitle "$wid")
 
 if [ "$class" = yakuake ] ; then
   echo "sticky=on state=floating"
-  xdotool windowmove $wid 0 40
+  xdotool windowmove $wid 0 30
 fi
 
 if [ "$class" = krunner ] ; then
   echo "sticky=on state=floating"
-  xdotool windowmove $wid 600 45
+  xdotool windowmove $wid 600 35
 fi
 
 if [ "$class" = plasmashell ] ; then
