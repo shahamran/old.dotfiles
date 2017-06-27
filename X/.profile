@@ -12,3 +12,5 @@ setxkbmap -layout us,il -option "grp:alt_shift_toggle,grp_led:scroll"
 
 export SSH_ASKPASS="$(which ksshaskpass)"
 # eval "$(ssh-agent)"
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -31,7 +31,7 @@ bspc config gapless_monocle      true
 bspc config single_monocle       true
 bspc config click_to_focus       true
 # for plasma panel
-bspc config top_padding          30
+bspc config top_padding          35
 
 # open windows to the right
 bspc config initial_polarity	second_child
