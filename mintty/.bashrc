@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# override windows' path (by explicitly setting only *nix paths)
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
 # for X(ming)
 export DISPLAY=:0
 
