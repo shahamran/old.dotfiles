@@ -1,94 +1,29 @@
-!#if __has_include(".extend.Xresources")
-!#include ".extend.Xresources"
-!#endif
+! to add program-specific stuff, create a new file with the config
+! in the .Xresources.d and use the following syntax:
+! #if __has_include("path/to/file")
+! #include("path/to/file")
+! #endif
+! 
+! color schemes should be defined in the themes directory
+! to use a specific theme, symlink it to "current"
 
-! ^ The above lines are no comments!
-! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
-! config can be added there or also here below.
-! For comments use "!"
+! colors
+#if __has_include(".Xresources.d/themes/current")
+#include ".Xresources.d/themes/current"
+#endif
 
-#include ".computer"
+! fonts
+#if __has_include(".Xresources.d/fonts")
+#include ".Xresources.d/fonts"
+#endif
 
-! --- Fonts ---
+! urxvt
+#if __has_include(".Xresources.d/urxvt")
+#include ".Xresources.d/urxvt"
+#endif
 
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+! rofi
+#if __has_include(".Xresources.d/rofi")
+#include ".Xresources.d/rofi"
+#endif
 
-! --- Cursor ---
-
-Xcursor.theme: Breeze
-Xcursor.size:  0
-
-! --- XTerm ---
-
-!XTerm*pointerColor: #16A085
-XTerm*reverseVideo: on
-XTerm*faceName: Terminus:size=11:antialias=true
-XTerm*selectToClipboard: true
-
-! ---URxvt---
-
-!URxvt.font: 9x15
-URxvt*font: xft:DejaVu Sans Mono:style=Book:pixelsize=14
-URxvt*boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=14
-!URxvt.depth: 32
-URxvt*scrollBar:                      false
-URxvt*mouseWheelScrollPage:           false
-URxvt*cursorBlink:                    true
-!URxvt*background:                     black
-!URxvt*foreground:                     grey
-URxvt*saveLines:                      5000
-URxvt.transparent:                    false
-
-! Custom colors!
-! special
-*.foreground:   #9b9081
-*.background:   #181b20
-*.cursorColor:  #9b9081
-
-! black
-*.color0:       #353535
-*.color8:       #5f5f5f
-
-! red
-*.color1:       #744b40
-*.color9:       #785850
-
-! green
-*.color2:       #6d6137
-*.color10:      #6f6749
-
-! yellow
-*.color3:       #765636
-*.color11:      #776049
-
-! blue
-*.color4:       #61564b
-*.color12:      #696057
-
-! magenta
-*.color5:       #6b4a49
-*.color13:      #6f5a59
-
-! cyan
-*.color6:       #435861
-*.color14:      #525f66
-
-! white
-*.color7:       #b3b3b3
-*.color15:      #cdcdcd
-
-! ---------- Rofi ----------
-#include "$HOME/.Xresources.d/rofi"
-!! --- Rofi Colors ---
-!
-!rofi.color-enabled: true
-!rofi.color-window: #181b20, #181b20, #353535
-!rofi.color-normal: #181b20, #9b9081, #181b20, #353535, #9b9081
-!rofi.color-active: #181b20, #9b9081, #181b20, #353535, #4094c2
-!rofi.color-urgent: #181b20, #9b9081, #181b20, #353535, #9f3636
-!
