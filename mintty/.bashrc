@@ -122,8 +122,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # for X(ming)
 export DISPLAY=:0
 
+# ssh
+# eval $(ssh-agent)
+
 custom_shell=fish
 
 if [ -t 1 ] && [ ! -z ${custom_shell} ]; then # if running in a terminal
-	exec $custom_shell                # run the custom shell
+	exec ssh-agent $custom_shell                # run the custom shell
 fi
