@@ -1,6 +1,6 @@
 ## variables
 
-# set winkey as the modifier (Mod1 is alt)
+# set winkey as the modifier (Mod1 = alt ; Mod4 = winkey)
 set $mod Mod4
 # --no-startup-id shortcut
 set $nid --no-startup-id
@@ -18,7 +18,7 @@ set $ws9  "9:<sup>9</sup> "
 set $ws10 "10:<sup>10</sup> "
 
 # font variable
-set $font Cantarell
+set $font Roboto
 # set $font DejaVu Sans Mono
 set $font_size 10
 set $font_size_bar 9
